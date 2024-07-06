@@ -81,6 +81,7 @@
                                 '0' => $this->lang->line("invoice_select_paymentmethod"),
                                 'Cash' => $this->lang->line('Cash'),
                                 'Cheque' => $this->lang->line('Cheque'),
+                                'Online' => $this->lang->line('Online'),
                             );
                             echo form_dropdown("payment_method", $paymentmethodArray, set_value("payment_method"), "id='payment_method' class='form-control select2'");
                         ?>

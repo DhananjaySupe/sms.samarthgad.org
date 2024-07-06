@@ -18,6 +18,7 @@ $lang['invoice_amount'] = "Amount";
 $lang['invoice_discount'] = "Discount";
 $lang['invoice_student'] = "Student";
 $lang['invoice_date'] = "Date";
+$lang['invoice_note'] = "Note";
 $lang['invoice_feetype'] = "Fee Type";
 $lang['invoice_invoice'] = "Invoice #";
 $lang['invoice_pdate'] = "Payment Date";
@@ -63,6 +64,7 @@ $lang['invoice_maininvoiceID'] = 'Invoice ID';
 
 $lang['Cash'] = "Cash";
 $lang['Cheque'] = "Cheque";
+$lang['Online'] = "Online";
 $lang['Paypal'] = "Paypal";
 $lang['Stripe'] = "Stripe";
 $lang['PayUMoney'] = "PayUMoney";

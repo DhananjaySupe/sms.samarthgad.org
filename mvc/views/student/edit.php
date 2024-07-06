@@ -451,6 +451,41 @@
                             <?php echo form_error('username'); ?>
                         </span>
                     </div>
+					
+					
+					 <?php 
+                        if(form_error('aadhar_no')) 
+                            echo "<div class='form-group has-error' >";
+                        else     
+                            echo "<div class='form-group' >";
+                    ?>
+                        <label for="aadhar_no" class="col-sm-2 control-label">
+                            <?=$this->lang->line("student_aadhar_no")?>
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="aadhar_no" name="aadhar_no" value="<?=set_value('aadhar_no', $student->aadhar_no)?>" >
+                        </div>
+                         <span class="col-sm-4 control-label">
+                            <?php echo form_error('aadhar_no'); ?>
+                        </span>
+                    </div>
+					
+					<?php 
+                        if(form_error('saral_id_no')) 
+                            echo "<div class='form-group has-error' >";
+                        else     
+                            echo "<div class='form-group' >";
+                    ?>
+                        <label for="saral_id_no" class="col-sm-2 control-label">
+                            <?=$this->lang->line("student_saral_id_no")?>
+                        </label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" id="saral_id_no" name="saral_id_no" value="<?=set_value('saral_id_no', $student->saral_id_no)?>" >
+                        </div>
+                         <span class="col-sm-4 control-label">
+                            <?php echo form_error('saral_id_no'); ?>
+                        </span>
+                    </div>
 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-8">

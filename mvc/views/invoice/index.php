@@ -163,6 +163,7 @@
                                 <th><?=$this->lang->line('slno')?></th>
                                 <th><?=$this->lang->line('invoice_date')?></th>
                                 <th><?=$this->lang->line('invoice_paidby')?></th>
+                                <th><?=$this->lang->line('invoice_note')?></th>
                                 <th><?=$this->lang->line('invoice_paymentamount')?></th>
                                 <th><?=$this->lang->line('invoice_weaver')?></th>
                                 <th><?=$this->lang->line('invoice_fine')?></th>

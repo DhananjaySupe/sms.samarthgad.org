@@ -102,6 +102,7 @@ class PaymentService
                                 'studentID'       => $invoice->studentID,
                                 'paymentamount'   => (($invoiceInfo['payment']['paidamount_' . $invoice->invoiceID] == '') ? NULL : $invoiceInfo['payment']['paidamount_' . $invoice->invoiceID]),
                                 'paymenttype'     => ucfirst($invoiceInfo['payment_method']),
+                                'note'     => $invoiceInfo['note'],
                                 'paymentdate'     => date('Y-m-d'),
                                 'paymentday'      => date('d'),
                                 'paymentmonth'    => date('m'),

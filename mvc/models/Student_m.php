@@ -211,4 +211,11 @@ class student_m extends MY_Model {
 		$query = $this->db->query("SELECT * FROM $this->_table_name WHERE studentID = (SELECT MAX(studentID) FROM $this->_table_name)");
 		return $query->row();
 	}
+	
+	public function export_data($where) {
+		$this->db->select('*')
+			->where($where);
+        $query = $this->db->get($this->_table_name);
+        return $query->result();
+    }
 }

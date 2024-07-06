@@ -82,11 +82,23 @@
                                 '0' => $this->lang->line("invoice_select_paymentmethod"),
                                 'Cash' => $this->lang->line('Cash'),
                                 'Cheque' => $this->lang->line('Cheque'),
+                                'Online' => $this->lang->line('Online'),
                             );
                             echo form_dropdown("payment_method", $paymentmethodArray, set_value("payment_method"), "id='payment_method' class='form-control select2'");
                         ?>
                         <span class="text-red">
                             <?php echo form_error('payment_method'); ?>
+                        </span>
+                    </div>
+					
+					
+					<div class="dateDiv form-group">
+                        <label for="note">
+                            <?=$this->lang->line("invoice_note")?>
+                        </label>
+                            <input type="text" class="form-control" id="note" name="note" value="<?=set_value('note')?>" >
+                        <span class="text-red">
+                            <?php echo form_error('note'); ?>
                         </span>
                     </div>
 

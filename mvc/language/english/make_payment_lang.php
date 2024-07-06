@@ -45,6 +45,7 @@ $lang['make_payment_total_hours'] = 'Total Hours';
 $lang['make_payment_select_payment_method'] = 'Select Payment Method';
 $lang['make_payment_payment_cash'] = 'Cash';
 $lang['make_payment_payment_cheque'] = 'Cheque';
+$lang['make_payment_payment_online'] = 'Online';
 
 
 $lang['make_payment_payment_history'] = 'Payment History';

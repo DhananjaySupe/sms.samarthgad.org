@@ -57,6 +57,7 @@ class Make_payment extends Api_Controller {
                 $this->retdata['paymentMethod'] = array(
                     '1' => $this->lang->line('make_payment_payment_cash'),
                     '2' => $this->lang->line('make_payment_payment_cheque'),
+                    '3' => $this->lang->line('make_payment_payment_online'),
                 );
 
                 $this->retdata['make_payment'] = $this->make_payment_m->get_single_make_payment(array('make_paymentID' => $id, 'schoolyearID' => $schoolyearID));

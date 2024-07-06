@@ -84,6 +84,7 @@
                                     '0' => $this->lang->line('make_payment_select_payment_method'),
                                     '1' => $this->lang->line('make_payment_payment_cash'),
                                     '2' => $this->lang->line('make_payment_payment_cheque'),
+                                    '3' => $this->lang->line('make_payment_payment_online'),
                                 );
 
                                 echo form_dropdown("payment_method", $paymentArray, set_value("payment_method"), "id='payment_method' class='form-control'");

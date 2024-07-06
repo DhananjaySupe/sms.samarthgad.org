@@ -919,6 +919,7 @@ class Invoice extends Admin_Controller
                             if(customCompute($this->data['payments'])) {
                                 foreach($this->data['payments'] as $payment) {
                                     $this->data['paymenttype'] = $payment->paymenttype;
+                                    $this->data['paymentnote'] = $payment->note;
                                     break;
                                 }
                             }
@@ -1016,6 +1017,7 @@ class Invoice extends Admin_Controller
                             if(customCompute($this->data['payments'])) {
                                 foreach($this->data['payments'] as $payment) {
                                     $this->data['paymenttype'] = $payment->paymenttype;
+                                    $this->data['paymentnote'] = $payment->note;
                                     break;
                                 }
                             }
@@ -1159,6 +1161,7 @@ class Invoice extends Admin_Controller
                                     if(customCompute($this->data['payments'])) {
                                         foreach($this->data['payments'] as $payment) {
                                             $this->data['paymenttype'] = $payment->paymenttype;
+											$this->data['paymentnote'] = $payment->note;
                                             break;
                                         }
                                     }
@@ -1510,6 +1513,7 @@ class Invoice extends Admin_Controller
                                                     'uname'           => $invoiceArray[$k]['uname'],
                                                     'transactionID'   => 'CASHANDCHEQUE' . random19(),
                                                     'globalpaymentID' => isset($globalPaymentIDArray[$invoiceArray[$k]['studentID']]) ? $globalPaymentIDArray[$invoiceArray[$k]['studentID']] : 0,
+                                                    'note'    => $this->input->post('note'),
                                                 ];
                                                 $k++;
                                             }
@@ -1699,7 +1703,8 @@ class Invoice extends Admin_Controller
                                                         'usertypeID'      => $invoiceArray[$k]['usertypeID'],
                                                         'uname'           => $invoiceArray[$k]['uname'],
                                                         'transactionID'   => 'CASHANDCHEQUE' . random19(),
-                                                        'globalpaymentID' => $globalpaymentID
+                                                        'globalpaymentID' => $globalpaymentID,
+														'note'			  => $this->input->post("note")
                                                     ];
                                                     $k++;
                                                 }
@@ -2117,6 +2122,7 @@ class Invoice extends Admin_Controller
                                                 'paymentamount'   => $payment->paymentamount,
                                                 'date'            => $payment->paymentdate,
                                                 'paymenttype'     => $payment->paymenttype,
+                                                'note'     => $payment->note,
                                             ];
                                         }
                                     }
@@ -2165,6 +2171,10 @@ class Invoice extends Admin_Controller
                         echo $paymentlist['paymenttype'];
                         echo '</td>';
 
+                        echo '<td data-title="' . $this->lang->line('invoice_note') . '">';
+                        echo $paymentlist['note'];
+                        echo '</td>';
+
                         echo '<td data-title="' . $this->lang->line('invoice_paymentamount') . '">';
                         echo number_format($paymentlist['paymentamount'], 2);
                         echo '</td>';
@@ -2182,7 +2192,7 @@ class Invoice extends Admin_Controller
                         }
 
                         if(($this->data['siteinfos']->school_year == $this->session->userdata('defaultschoolyearID')) || ($this->session->userdata('usertypeID') == 1) || ($this->session->userdata('usertypeID') == 5)) {
-                            if(($this->lang->line('Cash') == $paymentlist['paymenttype']) || ($this->lang->line('Cheque') == $paymentlist['paymenttype']) || ('Cash' == $paymentlist['paymenttype']) || ('Cheque' == $paymentlist['paymenttype'])) {
+                            if(($this->lang->line('Cash') == $paymentlist['paymenttype']) || ($this->lang->line('Cheque') == $paymentlist['paymenttype']) || ($this->lang->line('Online') == $paymentlist['paymenttype']) || ('Cash' == $paymentlist['paymenttype']) || ('Cheque' == $paymentlist['paymenttype']) || ('Online' == $paymentlist['paymenttype'])) {
                                 if(permissionChecker('invoice_delete')) {
                                     echo '<a href="' . base_url('invoice/deleteinvoicepaid/' . $paymentlist['globalpaymentID'] . '/' . $maininvoiceID) . '" onclick="return confirm(' . "'" . 'you are about to delete a record. This cannot be undone. are you sure?' . "'" . ')" class="btn btn-danger btn-xs mrg" data-placement="top" data-toggle="tooltip" data-original-title="' . $this->lang->line('delete') . '"><i class="fa fa-trash-o"></i></a>';
                                 }
@@ -2216,7 +2226,7 @@ class Invoice extends Admin_Controller
 
                         $excType = TRUE;
                         foreach($payments as $payment) {
-                            if(($this->lang->line('Cash') == $payment->paymenttype) || ($this->lang->line('Cheque') == $payment->paymenttype) || ('Cash' == $payment->paymenttype) || ('Cheque' == $payment->paymenttype)) {
+                            if(($this->lang->line('Cash') == $payment->paymenttype) || ($this->lang->line('Cheque') == $payment->paymenttype) || ($this->lang->line('Online') == $payment->paymenttype) || ('Cash' == $payment->paymenttype) || ('Cheque' == $payment->paymenttype) || ('Online' == $payment->paymenttype)) {
                                 $paymentArray[] = $payment->paymentID;
                                 if(isset($weaverandfines[$payment->paymentID])) {
                                     $weaverandfineArray[] = $weaverandfines[$payment->paymentID]->weaverandfineID;
@@ -2330,6 +2340,7 @@ class Invoice extends Admin_Controller
         if($this->session->userdata('usertypeID') == 1 || $this->session->userdata('usertypeID') == 5) {
             $payment_methods['Cash']   = $this->lang->line('Cash');
             $payment_methods['Cheque'] = $this->lang->line('Cheque');
+            $payment_methods['Online'] = $this->lang->line('Online');
         }
 
         if(customCompute($payment_gateways)) {
